@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"ODRTh3xaRR64wpeXJSlF33HMN-0/xt9X3IqxBjyJXHq4er_efXGW81k\"",
+ "etag": "\"ODRTh3xaRR64wpeXJSlF33HMN-0/1cdD8MOwj-s7cgKgD1yK7cLrqbQ\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -13,9 +13,9 @@
   "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
  },
  "protocol": "rest",
- "baseUrl": "https://myApplicationId.appspot.com/_ah/api/myApi/v1/sayHi/",
+ "baseUrl": "https://finaljokes-161017.appspot.com/_ah/api/myApi/v1/sayHi/",
  "basePath": "/_ah/api/myApi/v1/sayHi/",
- "rootUrl": "https://myApplicationId.appspot.com/_ah/api/",
+ "rootUrl": "https://finaljokes-161017.appspot.com/_ah/api/",
  "servicePath": "myApi/v1/sayHi/",
  "batchPath": "batch",
  "parameters": {
