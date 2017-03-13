@@ -17,6 +17,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        shrunk {
+            minifyEnabled true
+            shrinkResources true
+        }
     }
 }
 
@@ -25,6 +29,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //compile project(':backend')
     compile project(':jokeslibrary')
     compile project(':myandroidlibrary')
     compile 'com.android.support:appcompat-v7:25.2.0'

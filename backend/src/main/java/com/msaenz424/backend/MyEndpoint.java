@@ -9,14 +9,14 @@ package com.msaenz424.backend;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
-
-import javax.inject.Named;
+import com.google.api.server.spi.config.Named;
+import com.msaenz424.MyJokes;
 
 /**
  * An endpoint class we are exposing
  */
 @Api(
-        name = "myApi",
+        name = "myJokeApi",
         version = "v1",
         namespace = @ApiNamespace(
                 ownerDomain = "backend.msaenz424.com",
@@ -29,12 +29,11 @@ public class MyEndpoint {
     /**
      * A simple endpoint method that takes a name and says Hi back
      */
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
+    @ApiMethod(name = "sayRandomJoke")
+    public MyBean sayRandomJoke() {
         MyBean response = new MyBean();
-        response.setData("Hi, " + name);
-
+        MyJokes jokes = new MyJokes();
+        response.setData(jokes.getRandomJoke());
         return response;
     }
-
 }
