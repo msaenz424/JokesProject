@@ -25,11 +25,9 @@ android {
 }
 
 dependencies {
-    //compile fileTree(include: '*.jar', dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //compile project(':backend')
     compile project(':jokeslibrary')
     compile project(':myandroidlibrary')
     compile 'com.android.support:appcompat-v7:25.2.0'
@@ -38,12 +36,6 @@ dependencies {
     compile project(path: ':backend', configuration: 'android-endpoints')
 
     compile 'com.google.api-client:google-api-client:1.16.0-rc'
-    //compile 'com.google.api.client:google-api-client-googleapis:1.4.1-beta'
     compile 'com.google.http-client:google-http-client:1.22.0'
     compile 'com.google.http-client:google-http-client-android:1.20.0'
-
-    //compile files('libs/google-api-client-1.16.0-rc.jar')
-    //compile files('libs/google-api-client-googleapis-1.4.1-beta.jar')
-    //compile files('libs/google-http-client-1.22.0.jar')
-    //compile files('libs/google-http-client-android-1.22.0.jar')
 }
