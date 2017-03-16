@@ -1,23 +1,23 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import com.msaenz424.MyJokes;
+
 import com.msaenz424.myandroidlibrary.LibraryActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnTaskCompleted {
+    EndpointsAsyncTask task = new EndpointsAsyncTask(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        task.mOnTaskCompleted = this;
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,9 +42,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        EndpointsAsyncTask task = new EndpointsAsyncTask(this);
         task.execute();
     }
 
-
+    @Override
+    public void onTaskCompleted(String response) {
+        Intent intent = new Intent(this, LibraryActivity.class);
+        intent.putExtra(Intent.EXTRA_TEXT, response);
+        startActivity(intent);
+    }
 }

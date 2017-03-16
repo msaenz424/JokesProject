@@ -1,7 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -11,13 +10,13 @@ import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import com.msaenz424.backend.myJokeApi.MyJokeApi;
-import com.msaenz424.myandroidlibrary.LibraryActivity;
 
 import java.io.IOException;
 
 public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
     private static MyJokeApi myApiService = null;
     private Context mContext;
+    public OnTaskCompleted mOnTaskCompleted = null;
 
     public EndpointsAsyncTask(Context context){
         mContext = context;
@@ -57,8 +56,6 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Intent intent = new Intent(mContext, LibraryActivity.class);
-        intent.putExtra(Intent.EXTRA_TEXT, result);
-        mContext.startActivity(intent);
+        mOnTaskCompleted.onTaskCompleted(result);
     }
 }
