@@ -2,7 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
@@ -46,10 +46,7 @@ public class EndpointsAsyncTask extends AsyncTask<Void, Void, String> {
         try {
             result = myApiService.sayRandomJoke().execute().getData();
         } catch (IOException e) {
-            Toast.makeText(mContext,
-                    "An error has ocurred while trying to retrieve jokes, please try again",
-                    Toast.LENGTH_SHORT)
-                    .show();
+            Log.e("myApiService error", e.toString());
         }
         return result;
     }
