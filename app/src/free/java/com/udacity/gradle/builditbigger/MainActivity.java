@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -15,11 +16,14 @@ import com.msaenz424.myandroidlibrary.LibraryActivity;
 public class MainActivity extends AppCompatActivity implements OnTaskCompleted {
     EndpointsAsyncTask task = null;
     InterstitialAd mInterstitialAd;
+    private ProgressBar pbLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        pbLoading = (ProgressBar) findViewById(R.id.pbLoading);
+        pbLoading.setVisibility(View.INVISIBLE);
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnTaskCompleted {
     }
 
     public void tellJoke(View view) {
+        pbLoading.setVisibility(View.VISIBLE);
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         }else {
@@ -85,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements OnTaskCompleted {
 
     @Override
     public void onTaskCompleted(String response) {
+        pbLoading.setVisibility(View.INVISIBLE);
         Intent intent = new Intent(this, LibraryActivity.class);
         intent.putExtra(Intent.EXTRA_TEXT, response);
         startActivity(intent);
