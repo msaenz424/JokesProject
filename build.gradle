@@ -17,3 +17,26 @@ allprojects {
         jcenter()
     }
 }
+
+task runTest (){
+    dependsOn {
+        "app:connectedCheck"
+    }
+    doLast {
+        println "Tests completed"
+    }
+}
+
+// This task starts the app engine, runs the test, and stops the app engine
+task launchServerAndTest (dependsOn: ":backend:appengineRun") {
+    project(":backend").afterEvaluate {
+        backend ->
+        backend.extensions.appengine.daemon = true
+    }
+    doLast {
+        println "Server started"
+    }
+}
+
+launchServerAndTest.finalizedBy runTest
+runTest.finalizedBy ":backend:appengineStop"
