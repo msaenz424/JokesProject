@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"ODRTh3xaRR64wpeXJSlF33HMN-0/DNmQWa-MiAnOqTbbrbU4Tq4imf0\"",
+ "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/DNmQWa-MiAnOqTbbrbU4Tq4imf0\"",
  "discoveryVersion": "v1",
  "id": "myJokeApi:v1",
  "name": "myJokeApi",

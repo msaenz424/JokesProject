@@ -10,6 +10,7 @@
         android:id="@+id/tvJoke"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="@dimen/text_view_result_size"/>
 
 </android.support.constraint.ConstraintLayout>
